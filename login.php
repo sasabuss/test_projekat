@@ -16,20 +16,20 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $rezultat = $user->login($_POST['email'], $_POST['password']);
 
     if ($rezultat !== null && $rezultat !== true) {
-        $poruka = $rezultat; // prikazuje poruku greške iz metode
+        $poruka = $rezultat; // displays error message from method
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Prijava</title>
+    <title>Login</title>
 </head>
 <body>
 
-<h2>Prijava</h2>
+<h2>Login</h2>
 
 <?php if (!empty($poruka)) : ?>
     <p><?= htmlspecialchars($poruka) ?></p>
@@ -37,11 +37,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
 <form method="POST" action="">
     <input type="email" name="email" placeholder="Email" required><br><br>
-    <input type="password" name="password" placeholder="Lozinka" required><br><br>
-    <button type="submit">Prijavi se</button>
+    <input type="password" name="password" placeholder="Password" required><br><br>
+    <button type="submit">Log in</button>
 </form>
 
-<p>Nemate nalog? <a href="register.php">Registrujte se</a></p>
+<p>Don't have an account? <a href="register.php">Register here</a></p>
 
 </body>
 </html>

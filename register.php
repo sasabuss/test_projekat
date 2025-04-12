@@ -16,7 +16,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $rezultat = $user->register($_POST['email'], $_POST['password']);
 
     if ($rezultat === true) {
-        $poruka = "Uspešno ste se registrovali!";
+        $poruka = "You have successfully registered!";
     } else {
         $poruka = $rezultat;
     }
@@ -24,14 +24,14 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Registracija</title>
+    <title>Registration</title>
 </head>
 <body>
 
-<h2>Registracija</h2>
+<h2>Registration</h2>
 
 <?php if (!empty($poruka)) : ?>
     <p><?= $poruka ?></p>
@@ -39,16 +39,12 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
 <form method="POST" action="">
     <input type="email" name="email" placeholder="Email" required><br><br>
-    <input type="password" name="password" placeholder="Lozinka" required><br><br>
-    <button type="submit">Registruj se</button><br><br>
-    <p>Imas nalog?</p>
-    <a href="login.php">Uloguj se</a>
-    
+    <input type="password" name="password" placeholder="Password" required><br><br>
+    <button type="submit">Register</button><br><br>
+    <p>Already have an account?</p>
+    <a href="login.php">Log in</a>
 </form>
-
-
 
 </body>
 </html>
-
 
