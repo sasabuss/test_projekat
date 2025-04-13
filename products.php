@@ -30,20 +30,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+    .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .product-card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 16px;
+        width: 30%;
+        box-sizing: border-box;
+        background-color: #f9f9f9;
+    }
+
+    .product-card h2 {
+        margin-top: 0;
+    }
+</style>
+
 </head>
 <body>
-    <div>
-        <?php foreach($products as $product):?>
-            <h2><?=$product['name']?></h2>
-            <p><?=$product['description']?></p>
-            <p><?=$product['price']?></p>
-
+<div class="product-grid">
+    <?php foreach($products as $product): ?>
+        <div class="product-card">
+            <h2><?= htmlspecialchars($product['name']) ?></h2>
+            <p><?= htmlspecialchars($product['description']) ?></p>
+            <p><?= $product['price'] ?>€</p>
             <form method="POST" action="addToCart.php">
                 <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                 <button type="submit">Add to cart</button>
             </form>
-        <?php endforeach;?>
-    </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
     
 </form>
 </body>

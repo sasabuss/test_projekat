@@ -55,12 +55,19 @@
     $total += $subtotal;
 ?>
 
-<div style="margin-bottom: 20px;">
+<div style="margin-top: 10px;">
     <strong><?= htmlspecialchars($product['name']) ?></strong><br>
     Price: <?= number_format($price_eur, 2) ?> €<br>
     Quantity: <?= $quantity ?><br>
     Subtotal: <?= number_format($subtotal, 2) ?> €<br>
 </div>
+<a href="removeProduct.php?productId=<?= $product['id'] ?>">
+   <button type="button">Remove</button> 
+</a>
+
+<a href="clearCart.php">
+    <button type="button">Empty cart</button>
+</a>
 
 <?php endforeach; ?>
 
