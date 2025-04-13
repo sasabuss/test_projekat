@@ -8,6 +8,8 @@ if (!isset($_SESSION['user'])) {
     echo '<a href="login.php"><button>Log in</button></a>';
     exit;
 }
+
+include 'nav.php';
 ?>
 
 <!DOCTYPE html>

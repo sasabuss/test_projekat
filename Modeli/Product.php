@@ -22,4 +22,16 @@
 
             return $this->db->query($add);
         }
+
+        public function getAllProducts()
+        {
+            $get = ("SELECT * FROM products");
+            $result = $this->db->query($get);
+            
+            if ($result) {
+                return $result->fetch_all(MYSQLI_ASSOC);
+            } else {
+                return [];
+            }
+        }
     }
