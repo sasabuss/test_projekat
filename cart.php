@@ -73,7 +73,9 @@
 
 <hr>
 <p><strong>Total: <?= number_format($total, 2) ?> €</strong></p>
-
+<form method="POST" action="order.php">
+    <button type="submit">Order</button>
+</form>
 </body>
 </html>
 
