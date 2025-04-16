@@ -10,5 +10,6 @@ if (isset($_SESSION['user'])): ?>
         <a href="cart.php">Cart</a> |
         <a href="products.php">View all products</a> |
         <a href="addProduct.php">Add your product</a> |
+        <a href="myOrders.php">My orders</a> |
     </nav>
 <?php endif; ?>
