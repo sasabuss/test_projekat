@@ -11,5 +11,6 @@ if (isset($_SESSION['user'])): ?>
         <a href="products.php">View all products</a> |
         <a href="addProduct.php">Add your product</a> |
         <a href="myOrders.php">My orders</a> |
+        <a href="myProducts.php">My products</a> |
     </nav>
 <?php endif; ?>
