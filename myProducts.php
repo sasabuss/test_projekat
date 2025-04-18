@@ -1,62 +1,53 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    if (session_status() === PHP_SESSION_NONE)
-    {
-        session_start();
-    }
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit;
+}
 
-    if(!isset($_SESSION['user']))
-    {
-        header("Location: login.php");
-    }
+$userId = $_SESSION['user']['id'];
 
+require_once "Models/Database.php";
 
-    $userId = $_SESSION['user']['id'];
+$db = new Database();
+$conn = $db->getConnection();
 
-    require_once "Modeli/Database.php";
+$sql = "SELECT * FROM products WHERE user_id = '$userId'";
+$result = $conn->query($sql);
 
-
-    $db = new Database();
-    $conn = $db->getConnection();
-    $sql = ("SELECT * FROM products WHERE user_id = '$userId'");
-
-   $result = $conn->query($sql);
-
-   
-   
-   if($result->num_rows > 0)
-   {
+$rows = [];
+if ($result && $result->num_rows > 0) {
     $rows = $result->fetch_all(MYSQLI_ASSOC);
-   }
+}
 
-   else 
-   {
-    echo "No products to show";
-   }
+include 'nav.php';
+?>
 
-   ?>
-
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-   </head>
-   <body>
+    <title>My Products</title>
+</head>
+<body>
 
+<?php if (empty($rows)): ?>
+    <p>No products to show</p>
+<?php else: ?>
     <?php foreach($rows as $row): ?>
-        <h1><?= $row['name']?></h1>
-        <p><?= $row['description']?></p>
-        <p><?= $row['price']?></p>
+        <h1><?= htmlspecialchars($row['name']) ?></h1>
+        <p><?= htmlspecialchars($row['description']) ?></p>
+        <p><?= htmlspecialchars($row['price']) ?> €</p>
         <form method="POST" action="deleteProduct.php">
             <input type="hidden" name="product_id" value="<?= $row['id'] ?>">
             <button type="submit">Delete</button>
         </form>
-
     <?php endforeach; ?>
+<?php endif; ?>
 
-
-    
-   </body>
-   </html>
+</body>
+</html>

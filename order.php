@@ -16,7 +16,7 @@
         header("Location: products.php");
     }
 
-    require_once "Modeli/Database.php";
+    require_once "Models/Database.php";
 
     $db = new Database();
     $conn = $db->getConnection ();
@@ -34,6 +34,7 @@
     
     // Isprazni korpu
     unset($_SESSION['cart']);
+    include 'nav.php';
     
     ?>
 

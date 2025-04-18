@@ -13,7 +13,7 @@ if (!isset($_POST['product_id'])) {
     die("Invalid request.");
 }
 
-require_once "Modeli/Database.php";
+require_once "Models/Database.php";
 
 $db = new Database();
 $conn = $db->getConnection();

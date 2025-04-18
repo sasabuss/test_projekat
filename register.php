@@ -1,6 +1,6 @@
 <?php
-require_once 'Modeli/Database.php';
-require_once 'Modeli/User.php';
+require_once 'Models/Database.php';
+require_once 'Models/User.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

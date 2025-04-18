@@ -14,8 +14,8 @@
         die("Your cart is empty.");
     }
 
-    require_once "Modeli/Database.php";
-    require_once "Modeli/Product.php";
+    require_once "Models/Database.php";
+    require_once "Models/Product.php";
 
     $db = new Database();
     $conn = $db->getConnection();
@@ -35,6 +35,8 @@
 
     $total = 0;
 
+    include 'nav.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -45,37 +47,37 @@
 </head>
 <body>
 
-<h2>Your Cart</h2>
+    <h2>Your Cart</h2>
 
-<?php foreach ($products as $product): 
-    $id = $product['id'];
-    $quantity = $_SESSION['cart'][$id];
-    $price_eur = $product['price'] ;
-    $subtotal = $price_eur * $quantity;
-    $total += $subtotal;
-?>
+    <?php foreach ($products as $product): 
+        $id = $product['id'];
+        $quantity = $_SESSION['cart'][$id];
+        $price_eur = $product['price'] ;
+        $subtotal = $price_eur * $quantity;
+        $total += $subtotal;
+    ?>
 
-<div style="margin-top: 10px;">
-    <strong><?= htmlspecialchars($product['name']) ?></strong><br>
-    Price: <?= number_format($price_eur, 2) ?> €<br>
-    Quantity: <?= $quantity ?><br>
-    Subtotal: <?= number_format($subtotal, 2) ?> €<br>
-</div>
-<a href="removeProduct.php?productId=<?= $product['id'] ?>">
-   <button type="button">Remove</button> 
-</a>
+    <div style="margin-top: 10px;">
+        <strong><?= htmlspecialchars($product['name']) ?></strong><br>
+        Price: <?= number_format($price_eur, 2) ?> €<br>
+        Quantity: <?= $quantity ?><br>
+        Subtotal: <?= number_format($subtotal, 2) ?> €<br>
+    </div>
+    <a href="removeProduct.php?productId=<?= $product['id'] ?>">
+    <button type="button">Remove</button> 
+    </a>
 
-<a href="clearCart.php">
-    <button type="button">Empty cart</button>
-</a>
+    <a href="clearCart.php">
+        <button type="button">Empty cart</button>
+    </a>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
 
-<hr>
-<p><strong>Total: <?= number_format($total, 2) ?> €</strong></p>
-<form method="POST" action="order.php">
-    <button type="submit">Order</button>
-</form>
+    <hr>
+    <p><strong>Total: <?= number_format($total, 2) ?> €</strong></p>
+    <form method="POST" action="order.php">
+        <button type="submit">Order</button>
+    </form>
 </body>
 </html>
 

@@ -11,7 +11,7 @@
         header("Location: login.php");
     }
 
-    require_once "Modeli/Database.php";
+    require_once "Models/Database.php";
 
     $db = new Database();
     $conn = $db->getConnection();
@@ -27,6 +27,8 @@
     $result = $conn->query($sql);
 
     $show = $result->fetch_all(MYSQLI_ASSOC);
+
+    include 'nav.php';
 
 ?>
 

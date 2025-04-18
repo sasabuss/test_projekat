@@ -9,8 +9,8 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-require_once "Modeli/Database.php";
-require_once "Modeli/Product.php";
+require_once "Models/Database.php";
+require_once "Models/Product.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -43,6 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Error while adding the product.";
     }
 }
+
+include 'nav.php';
 ?>
 
 <!DOCTYPE html>
