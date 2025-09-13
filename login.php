@@ -16,7 +16,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $rezultat = $user->login($_POST['email'], $_POST['password']);
 
     if ($rezultat !== null && $rezultat !== true) {
-        $poruka = $rezultat; // displays error message from method
+        $poruka = $rezultat; 
     }
 }
 ?>
