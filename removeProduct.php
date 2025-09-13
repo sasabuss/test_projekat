@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-// Provera da li je poslat productId
+
 if (!isset($_GET['productId']) || empty($_GET['productId'])) {
     header("Location: cart.php");
     exit;
@@ -17,11 +17,10 @@ if (!isset($_GET['productId']) || empty($_GET['productId'])) {
 
 $productId = $_GET['productId'];
 
-// Provera da li korpa postoji i da li sadrži taj proizvod
 if (isset($_SESSION['cart'][$productId])) {
     unset($_SESSION['cart'][$productId]);
 }
 
-// Redirekcija nazad na korpu
+
 header("Location: cart.php");
 exit;
