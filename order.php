@@ -27,12 +27,12 @@
         $productId = (int)$productId;
         $quantity = (int)$quantity;
     
-        // Ubacivanje u tabelu 'orders'
+        
         $query = "INSERT INTO orders (user_id, product_id, quantity) VALUES ($userId, $productId, $quantity)";
         $conn->query($query);
     }
     
-    // Isprazni korpu
+    
     unset($_SESSION['cart']);
     include 'nav.php';
     
