@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $product_id = $_POST['product_id'];
 
-    // Ako korpa ne postoji, napravi je
+    
     if (!isset($_SESSION['cart'])) 
         {
             $_SESSION['cart'] = [];
